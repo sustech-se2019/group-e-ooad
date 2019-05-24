@@ -25,6 +25,9 @@ public interface NewsRepository extends JpaRepository<News, Long> {
     @Query(value = "select * from news order by rand() LIMIT 1", nativeQuery = true)
     List<News> randomNews();
 
+    @Query(value = "select * from news where label in (select label from news n join user_liked ul on n.news_id=ul.news_id where ul.user_id=?1 and ul.isLiked=1) order by rand() LIMIT 1", nativeQuery = true)
+    List<News> giveLiked(long id);
+
     @Query(value = "select * from news where news_id=?1", nativeQuery = true)
     List<News> findById(long id);
 

@@ -86,12 +86,12 @@ public class AccountController {
     /**
      * To allow user sign up.
      *
-     * @param username Account username
-     * @param password User's password
-     * @param age User's age
+     * @param username   Account username
+     * @param password   User's password
+     * @param age        User's age
      * @param occupation User's occupation
-     * @param gender User's gender
-     * @param nickname User's nickname
+     * @param gender     User's gender
+     * @param nickname   User's nickname
      * @return Status of post
      */
     @ResponseBody
@@ -104,13 +104,14 @@ public class AccountController {
             code = -1;
             msg = "Signup fail";
         } else {
-            user = new User(username, password, nickname,Integer.parseInt(age),occupation,Integer.parseInt(gender));
+            user = new User(username, password, nickname, Integer.parseInt(age), occupation, Integer.parseInt(gender));
             userService.addUser(user);
             code = 1;
             msg = "Signup successfully";
         }
         return new ResultVO<>(code, msg, user);
     }
+
     /**
      * @param request The HttpServletRequest entity, use it to obtain the user entity in session.
      * @return code status which is state whether succeed or not.
@@ -126,23 +127,28 @@ public class AccountController {
     /**
      * update information
      *
-     * @param request Http request
+     * @param request    Http request
      * @param occupation user's occupation
-     * @param birthday user's birthday
-     * @param gender user's gender
-     * @param name user's nick name
+     * @param birthday   user's birthday
+     * @param genderString     user's gender
+     * @param name       user's nick name
      * @return status code
      */
     @ResponseBody
     @RequestMapping(value = "updateInformation", method = RequestMethod.POST)
-    private ResultVO<String> update(HttpServletRequest request, @RequestParam String occupation, @RequestParam String birthday, @RequestParam String gender, @RequestParam String name) {
+    private ResultVO<String> update(HttpServletRequest request, @RequestParam String occupation, @RequestParam String birthday, @RequestParam String genderString, @RequestParam String name) {
         Object thisClient = request.getSession().getAttribute("entity");
         User user = (User) thisClient;
         if (user == null) {
             return new ResultVO<>(0, "Not login yet");
         } else {
-            userService.update(name,occupation,birthday,Integer.parseInt(gender),Integer.parseInt(String.valueOf(user.getId())));
-            return new ResultVO<>(1, "update bookmark status", "Successfully");
+            int gender = -1;
+            if (genderString.equals("男")) {
+                gender = 1;
+            } else
+                gender = 0;
+            userService.update(name, occupation, birthday, gender, Integer.parseInt(String.valueOf(user.getId())));
+            return new ResultVO<>(1, "update information status", "Successfully");
         }
     }
 }

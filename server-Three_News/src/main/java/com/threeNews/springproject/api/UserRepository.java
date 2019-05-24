@@ -24,7 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "select * from news n join user_liked ul on n.news_id=ul.news_id where ul.user_id=?1", nativeQuery = true)
     List<User> findLikedById(long id);
 
-    @Query(value = "update user set nick_name=?1,occupation=?2,birthday=?3,gender=?4 where user_id=?2", nativeQuery = true)
+    @Query(value = "update user set nick_name=?1,occupation=?2,birthday=?3,gender=?4,age=?5 where user_id=?6", nativeQuery = true)
     @Modifying
     void updateNickName(String name, String occupation, String birthday, int gender, int age, long id);
 

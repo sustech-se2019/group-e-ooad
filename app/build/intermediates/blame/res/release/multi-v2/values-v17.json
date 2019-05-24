@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/Personal/Github/main-project-repository-ooad/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-v17/values-v17.xml",
+            "outputFile": "D:\\workspace\\main-project-repository-ooad\\app\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-v17\\values-v17.xml",
             "map": [
                 {
-                    "source": "/Users/Personal/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha3.aar/95f852b764c104a06931a7cde91c7477/res/values-v17/values-v17.xml",
+                    "source": "C:\\Users\\67655\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-alpha3.aar\\6f5240be2ecd532c7fdb8a5d607ae73b\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,25,29,33,37,40,43,46,50,53,57",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

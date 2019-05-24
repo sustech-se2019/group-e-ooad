@@ -386,7 +386,6 @@ public class BrowserFragment extends SwipeBackFragment {
     private void sendChange() {
         if (isLike != originIsLike || isBookmarked != originIsBookmarked) {
             String url = "http://47.107.97.154:8081/closeNews";
-//        String url = "http://10.21.64.90:8081/closeNews";
             StringRequest request = new StringRequest(
                     Request.Method.POST, url,
                     new Response.Listener<String>() {

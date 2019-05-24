@@ -51,6 +51,16 @@ public class NewsController {
         }
     }
 
+    /**
+     * close news and update the status
+     *
+     * @param request httprequest
+     * @param website website of news
+     * @param rLikeStatus like status of news
+     * @param rBookmarkStatus bookmark status of news
+     * @param newsId new's id
+     * @return status code
+     */
     @ResponseBody
     @RequestMapping(value = "closeNews", method = RequestMethod.POST)
     private ResultVO<String> closeNews(HttpServletRequest request, @RequestParam String website, @RequestParam String rLikeStatus, @RequestParam String rBookmarkStatus, @RequestParam String newsId) {
@@ -93,7 +103,7 @@ public class NewsController {
         News[] newsList = new News[3];
         for (int i = 0; i < 3; i++) {
             if (user == null) {
-                news = newsService.getRandomNews().get(0);
+                news = newsService.getRandomNews();
                 Object historyObject = request.getSession().getAttribute("history");
                 List<Long> historyList = (List<Long>) historyObject;
                 if (historyList == null) {
@@ -103,7 +113,7 @@ public class NewsController {
                 } else {
                     while (historyList.contains(news.getId()) && count < 10) {
                         System.out.println("news exist in history.");
-                        news = newsService.getRandomNews().get(0);
+                        news = newsService.getRandomNews();
                         count++;
                     }
                     historyList.add(news.getId());
@@ -111,17 +121,15 @@ public class NewsController {
                 newsList[i] = news;
                 request.getSession().setAttribute("history", historyList);
             } else {
-                news = newsService.getRandomNews().get(0);
+                news = newsService.giveLike(user.getId());
                 Object historyObject = request.getSession().getAttribute("history");
                 List<Long> historyList = (List<Long>) historyObject;
                 if (historyList == null) {
-                    System.out.println("History is not exist.");
                     historyList = new ArrayList<>();
                     historyList.add(news.getId());
                 } else {
                     while (historyList.contains(news.getId()) && count < 10) {
-                        System.out.println("news exist in history.");
-                        news = newsService.getRandomNews().get(0);
+                        news = newsService.giveLike(user.getId());
                         count++;
                     }
                     historyList.add(news.getId());

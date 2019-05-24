@@ -94,8 +94,8 @@ public class NewsGridFragment extends Fragment {
                 final String finalurl = newsUrl;
                 Log.i("Go to", position+","+itemPosition+","+newsUrl);
                 String url = "http://47.107.97.154:8081/getNews";
-//        String url = "http://10.21.64.90:8081/getNews";
 
+                final int finalNewsId = newsId;
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     /**
                      * Get response from server
@@ -106,9 +106,9 @@ public class NewsGridFragment extends Fragment {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
+                            Log.i("test",response);
                             int isLike = 0;
                             int isBookmarked = 0;
-                            String website = "";
                             switch (jsonObject.optInt("code")){
                                 case 1: // isLiked
                                     isLike = 1;
@@ -136,10 +136,8 @@ public class NewsGridFragment extends Fragment {
                                 default:
                                     break;
                             }
-                            website = "https://m.toutiao.com/search/?need_open_window=1";
-                            int newsid = jsonObject.getJSONObject("data").optInt("id");
 //                        BrowserFragment browserfragment = Snake.newProxySupport(BrowserFragment.class, isBookmarked, isLike, website);
-                                ((NavigationHost)getActivity()).navigateTo(new BrowserFragment(isBookmarked,isLike,finalurl,newsid), true,false);
+                                ((NavigationHost)getActivity()).navigateTo(new BrowserFragment(isBookmarked,isLike,finalurl, finalNewsId), true,false);
 
 
 
@@ -161,7 +159,7 @@ public class NewsGridFragment extends Fragment {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String,String> hashMap = new HashMap<>();
-                        hashMap.put("newsId","462");
+                        hashMap.put("newsId",String.valueOf(finalNewsId));
                         return hashMap;
                     }
                     @Override
@@ -390,7 +388,6 @@ public class NewsGridFragment extends Fragment {
         }*/
         /**/
         String url = "http://47.107.97.154:8081/getNews";
-//        String url = "http://10.21.64.90:8081/getNews";
 
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             /**
@@ -433,10 +430,10 @@ public class NewsGridFragment extends Fragment {
                             break;
                     }
                     website = "https://m.toutiao.com/search/?need_open_window=1";
-                    int newsid = jsonObject.getJSONObject("data").optInt("id");
+//                    int newsid = jsonObject.getJSONObject("data").optInt("id");
                     if(item.getItemId()==R.id.search){
 //                        BrowserFragment browserfragment = Snake.newProxySupport(BrowserFragment.class, isBookmarked, isLike, website);
-                        ((NavigationHost)getActivity()).navigateTo(new BrowserFragment(isBookmarked, isLike, website,newsid), true,false);
+                        ((NavigationHost)getActivity()).navigateTo(new BrowserFragment(isBookmarked, isLike, website,0), true,false);
 
 
                     }

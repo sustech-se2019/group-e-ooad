@@ -1,5 +1,6 @@
 package com.google.codelabs.mdc.java.threeNews;
 
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,15 +21,18 @@ public class NewsCardViewHolder extends RecyclerView.ViewHolder {
     NewsCardViewHolder(@NonNull View itemView, OnRecycleViewClickListener onRecycleViewClickListener) {
         super(itemView);
         newsTitle1 = itemView.findViewById(R.id.news_title_1);
+        newsTitle1.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         newsIntro1 = itemView.findViewById(R.id.news_description_1);
         LinearLayout newsLayout1 = itemView.findViewById(R.id.news_1);
 
 
         newsTitle2 = itemView.findViewById(R.id.news_title_2);
+        newsTitle2.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         newsIntro2 = itemView.findViewById(R.id.news_description_2);
         LinearLayout newsLayout2 = itemView.findViewById(R.id.news_2);
 
         newsTitle3 = itemView.findViewById(R.id.news_title_3);
+        newsTitle3.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         newsIntro3 = itemView.findViewById(R.id.news_description_3);
         LinearLayout newsLayout3 = itemView.findViewById(R.id.news_3);
 

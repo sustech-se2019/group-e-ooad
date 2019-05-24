@@ -1,4 +1,4 @@
-#Fri May 24 23:39:10 CST 2019
-base.0=/Users/Personal/Github/main-project-repository-ooad/app/build/intermediates/dex/debug/mergeDexDebug/out
+#Sat May 25 06:05:52 CST 2019
+base.0=D\:\\workspace\\main-project-repository-ooad\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\out
 path.0=classes.dex
 renamed.0=classes.dex

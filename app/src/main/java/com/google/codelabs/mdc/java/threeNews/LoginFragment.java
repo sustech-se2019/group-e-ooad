@@ -77,8 +77,6 @@ public class LoginFragment extends Fragment {
                     passwordTextInput.setError(getString(R.string.error_password));
                 }else{
                     String url = "http://47.107.97.154:8081/login";
-//                    String url = "http://10.21.64.90:8081/login";
-
                     StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         /**
                          * Get response from server

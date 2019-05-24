@@ -61,6 +61,18 @@ public class NewsService {
     }
 
     /**
+     * give news the user likes
+     * @param id user's id
+     * @return news
+     */
+    public News giveLike(long id){
+        List<News> newsList = newsRepository.giveLiked(id);
+        if (newsList.isEmpty()){
+            return newsRepository.randomNews().get(0);
+        }
+        return newsRepository.giveLiked(id).get(0);
+    }
+    /**
      * get news whether bookmark
      *
      * @param userId user's id
@@ -156,7 +168,7 @@ public class NewsService {
         newsRepository.save(news);
     }
 
-    public List<News> getRandomNews() {
-        return newsRepository.randomNews();
+    public News getRandomNews() {
+        return newsRepository.randomNews().get(0);
     }
 }

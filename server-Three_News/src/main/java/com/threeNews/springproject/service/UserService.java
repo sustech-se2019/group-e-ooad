@@ -3,8 +3,10 @@ package com.threeNews.springproject.service;
 import com.threeNews.springproject.api.UserRepository;
 import com.threeNews.springproject.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.Table;
 import java.util.List;
 
 /**
@@ -81,6 +83,7 @@ public class UserService {
      * @param gender user's gender
      * @param id user's id
      */
+    @Transactional
     public void update(String name,String occupation, String birthday, int gender, int id){
         int age = 2019 - Integer.parseInt(birthday);
         userRepository.updateNickName(name,occupation,birthday,gender, age ,id);
