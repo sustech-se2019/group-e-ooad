@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.107.97.154:3306/three_news?useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    url: jdbc:mysql://127.0.0.1:3306/three_news?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: Zjh19971215
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+
+  spring:
+    thymeleaf:
+    mode: HTML
+#  mvn clean package -Dmaven.test.skip=true

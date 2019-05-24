@@ -1,0 +1,4 @@
+#Fri May 24 23:43:03 CST 2019
+base.0=/Users/Personal/Github/main-project-repository-ooad/app/build/intermediates/dex/release/mergeDexRelease/out
+path.0=classes.dex
+renamed.0=classes.dex
